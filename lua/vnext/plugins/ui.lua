@@ -1,10 +1,6 @@
 return {
   { "nvim-lua/plenary.nvim", lazy = true },
   { "MunifTanjim/nui.nvim", lazy = true },
-  -- { 'akinsho/toggleterm.nvim', version = "*", config = true}, --Terminal
-
-  -- Using Lazy
-  -- => 
   {
     "olimorris/onedarkpro.nvim",
     priority = 1000, -- make sure to load this before all the other start plugins
@@ -30,25 +26,6 @@ return {
       end,
   },
   {"ellisonleao/glow.nvim", config = true, cmd = "Glow"},
-  -- {
-  --   'MeanderingProgrammer/render-markdown.nvim',
-  --   dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' }, -- if you use the mini.nvim suite
-  --   dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
-  --   -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
-  --   ---@module 'render-markdown'
-  --   ---@type render.md.UserConfig
-  --   opts = {},
-  -- },
-  -- {
-  --   "OXY2DEV/markview.nvim",
-  --   lazy = false,
-  --
-  --   -- For blink.cmp's completion
-  --   -- source
-  --   dependencies = {
-  --       "saghen/blink.cmp"
-  --   },
-  -- },
   {
     'akinsho/toggleterm.nvim', 
     version = "*", 
@@ -311,46 +288,6 @@ return {
       end, -- end config function
   },
 
-  -- Updated Tokyonight to match my previous color scheme
-    -- {
-    --   "folke/tokyonight.nvim",
-    --   lazy = false,  -- Load during startup
-    --   priority = 1000,  -- Load before other plugins
-    --   config = function()
-    --     require("tokyonight").setup({
-    --       style = "night",  -- The dark variant
-    --       -- Customize the theme to look like bearded-arc
-    --       on_colors = function(colors)
-    --         -- Adjust colors to match bearded-arc theme
-    --         colors.bg = "#1c2433"       -- Dark blue-ish background
-    --         colors.bg_dark = "#161c2d"  -- Darker background
-    --         colors.bg_float = "#1c2433" -- Background for floating windows
-    --         colors.bg_highlight = "#242e42" -- Background for highlighted lines
-    --         colors.fg = "#b9c0cb"       -- Foreground text
-    --         colors.comment = "#71839b"  -- Comments
-    --         colors.blue = "#61AFEF"     -- Identifiers
-    --         colors.cyan = "#77aed7"     -- Variables
-    --       end,
-    --       on_highlights = function(highlights, colors)
-    --         -- Apply the highlight overrides from your config
-    --         highlights.Comment = { fg = colors.comment, italic = true }
-    --         highlights["@comment"] = { fg = colors.comment, italic = true }
-    --         highlights.Identifier = { fg = "#61AFEF" }
-    --         highlights["@variable"] = { fg = "#77aed7" }
-            
-    --         -- Additional highlights to better match bearded-arc
-    --         highlights.Function = { fg = "#c75ae8" }  -- Purple for functions
-    --         highlights.String = { fg = "#8ebd6b" }    -- Green for strings
-    --         highlights.Number = { fg = "#d19a66" }    -- Orange for numbers
-    --         highlights.Keyword = { fg = "#e06c75" }   -- Red for keywords
-    --       end
-    --     })
-        
-    --     -- Set the colorscheme
-    --     vim.cmd.colorscheme("tokyonight")
-    --   end,
-    -- },
-    
   -- Optional: Add nvim-web-devicons for file icons
   {
     "nvim-tree/nvim-web-devicons",
@@ -362,14 +299,4 @@ return {
   lazy = false,
   dependencies = { "nvim-telescope/telescope.nvim" }
   },
-  -- Lazy
-  -- {
-  --   "olimorris/onedarkpro.nvim",
-  --   priority = 1000, -- Ensure it loads first
-  --   vim.cmd("colorscheme onedark_dark")
-
-  -- },
-
-  -- -- somewhere in your config:
-  -- vim.cmd("colorscheme onedark")
 }

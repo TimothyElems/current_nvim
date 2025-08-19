@@ -99,16 +99,6 @@ return {
       n_lines = 50,
     },
   },
-  
-  {
-    "folke/todo-comments.nvim",
-    dependencies = { "nvim-lua/plenary.nvim" },
-    opts = {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
-    }
-  },
 
   {
     "gbprod/substitute.nvim",
@@ -122,90 +112,22 @@ return {
   },
 
   {
-    {
-      "folke/todo-comments.nvim",
-      event = "BufReadPre", -- needed to highlight keywords
-      dependencies = { "nvim-lua/plenary.nvim" },
-      opts = {
-        highlight = {
-          multiline = false, -- I usually only wnat one line to be highlighted
-        },
-      },
-      keys = {
-        -- stylua: ignore start
-        { "<leader>sT", function() Snacks.picker.todo_comments() end, desc = "Todo", },
-        -- stylua: ignore end
-      },
-    },
-  },
-
-  -- {
-  --   "allaman/emoji.nvim",
-  --   dev = true,
-  --   ft = "markdown",
-  --   opts = {
-  --     enable_cmp_integration = true,
-  --     plugin_path = vim.fn.expand("~/workspace/github.com/allaman"),
-  --   },
-  -- },
-  {
-    "allaman/emoji.nvim",
-    version = "1.0.0", -- optionally pin to a tag
-    ft = { "markdown", "html" },     -- adjust to your needs
-    dependencies = {
-      -- util for handling paths
-      "nvim-lua/plenary.nvim",
-      -- optional for nvim-cmp integration
-      "hrsh7th/nvim-cmp",
-      -- optional for telescope integration
-      "nvim-telescope/telescope.nvim",
-      -- optional for fzf-lua integration via vim.ui.select
-      "ibhagwan/fzf-lua",
-    },
+    "folke/todo-comments.nvim",
+    event = "BufReadPre", -- needed to highlight keywords
+    dependencies = { "nvim-lua/plenary.nvim" },
     opts = {
-      -- default is false, also needed for blink.cmp integration!
-      enable_cmp_integration = true,
-      -- optional if your plugin installation directory
-      -- is not vim.fn.stdpath("data") .. "/lazy/
-      plugin_path = vim.fn.expand("$HOME/plugins/"),
-    },
-    config = function(_, opts)
-      require("emoji").setup(opts)
-      -- optional for telescope integration
-      local ts = require('telescope').load_extension 'emoji'
-      vim.keymap.set('n', '<leader>se', ts.emoji, { desc = '[S]earch [E]moji' })
-    end,
-  },
-
-  -- emoji blink.cmp integration
-  {
-    "saghen/blink.cmp",
-    dependencies = { "allaman/emoji.nvim", "saghen/blink.compat" },
-    opts = {
-      sources = {
-        default = { "emoji" },
-        providers = {
-          emoji = {
-            name = "emoji",
-            module = "blink.compat.source",
-            -- overwrite kind of suggestion
-            transform_items = function(ctx, items)
-              local kind = require("blink.cmp.types").CompletionItemKind.Text
-              for i = 1, #items do
-                items[i].kind = kind
-              end
-              return items
-            end,
-          },
-        },
+      highlight = {
+        multiline = false, -- I usually only wnat one line to be highlighted
       },
     },
+    keys = {
+      -- stylua: ignore start
+      { "<leader>sT", function() Snacks.picker.todo_comments() end, desc = "Todo", },
+      -- stylua: ignore end
+    },
   },
-
-  -- NerdIcons
+  -- -- NerdIcons
    {'glepnir/nerdicons.nvim', cmd = 'NerdIcons', config = function() require('nerdicons').setup({}) end}, 
-
-
 
   {
     "MagicDuck/grug-far.nvim",
@@ -234,7 +156,6 @@ return {
     "MeanderingProgrammer/render-markdown.nvim",
     ft = { "markdown", "norg", "org" },
     opts = {
-      completions = { blink = { enabled = true } },
       render_modes = { "n" },
       code = {
         sign = false,
@@ -246,31 +167,5 @@ return {
       require("render-markdown").setup(opts)
       vim.api.nvim_set_keymap("n", "<leader>um", "<cmd>RenderMarkdown toggle<cr>", { desc = "Toggle Markdown" })
     end,
-  },
-
-  -- render-markdown blink.cmp integration
-  {
-    "saghen/blink.cmp",
-    dependencies = { "MeanderingProgrammer/render-markdown.nvim", "saghen/blink.compat" },
-    opts = {
-      sources = {
-        default = { "markdown" },
-        providers = {
-          markdown = {
-            name = "RenderMarkdown",
-            module = "blink.compat.source",
-            fallbacks = { "lsp" },
-            -- overwrite kind of suggestion
-            transform_items = function(ctx, items)
-              local kind = require("blink.cmp.types").CompletionItemKind.Text
-              for i = 1, #items do
-                items[i].kind = kind
-              end
-              return items
-            end,
-          },
-        },
-      },
-    },
   },
 }

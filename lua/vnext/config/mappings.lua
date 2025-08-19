@@ -35,6 +35,9 @@ map("n", "<leader>wl", "<cmd>vertical resize -3<cr>", { desc = "Right" })
 map("n", "<tab>", "<cmd>bnext<cr>", { desc = "Next buffer" })
 map("n", "<S-tab>", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
 map("n", "<leader>bD", "<cmd>%bd|e#|bd#<cr>", { desc = "Close all but the current buffer" })
+map("n", "<leader>cc", "<cmd>bd<cr>", { desc = "Close current buffer" })
+-- vim.keymap.set('n', '<leader>cc', '<cmd>bd<CR>', { desc = 'Close current buffer/tab', silent = true })
+
 
 -- new file
 map("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New file" })
